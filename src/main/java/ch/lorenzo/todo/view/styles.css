@@ -1,0 +1,6 @@
+.button {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-font-fill: #000000;
+    -fx-pref-height: 60px;
+}
