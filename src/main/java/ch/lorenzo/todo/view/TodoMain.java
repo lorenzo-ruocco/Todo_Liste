@@ -4,20 +4,25 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 public class TodoMain extends Application {
-    private TodoView view;
+
+    // Core MVC components
     private TodoModel model;
+    private TodoView view;
     private TodoController controller;
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+        // Create model, view, controller
         model = new TodoModel();
         view = new TodoView(model, stage);
         controller = new TodoController(model, view);
 
+        // Show the UI
         view.start();
     }
 }
+
