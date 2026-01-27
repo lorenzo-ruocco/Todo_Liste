@@ -186,6 +186,14 @@ public class TodoView {
         return taskListView;
     }
 
+    public ListView<Task> getDoneListView() {
+        return doneListView;
+    }
+
+    public GridPane getPane() {
+        return pane;
+    }
+
     public Stage getStage() {
         return stage;
     }

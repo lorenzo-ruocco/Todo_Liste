@@ -23,5 +23,19 @@ public class TodoModel {
     public ObservableList<Task> getTasks() {
         return tasks;
     }
+
+    public ObservableList<Task> getDoneTasks() {
+        return doneTasks;
+    }
+
+    public void addDoneTask(Task task) {
+        doneTasks.add(task);
+    }
+
+    public void removeDoneTask(Task task) {
+        doneTasks.remove(task);
+    }
+
+    
 }
 
