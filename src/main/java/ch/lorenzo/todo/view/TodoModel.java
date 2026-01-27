@@ -5,25 +5,26 @@ import javafx.collections.ObservableList;
 
 public class TodoModel {
 
-    // Backing list for tasks
+    // Task collections
     private final ObservableList<Task> tasks = FXCollections.observableArrayList();
     private final ObservableList<Task> doneTasks = FXCollections.observableArrayList();
 
-    // Add a task to the list
+    private String storageFile;
+
+    // Open tasks
     public void addTask(Task task) {
         tasks.add(task);
     }
 
-    // Remove a task from the list
     public void removeTask(Task task) {
         tasks.remove(task);
     }
 
-    // Expose tasks for bindings/view
     public ObservableList<Task> getTasks() {
         return tasks;
     }
 
+    // Done tasks
     public ObservableList<Task> getDoneTasks() {
         return doneTasks;
     }
@@ -36,6 +37,13 @@ public class TodoModel {
         doneTasks.remove(task);
     }
 
-    
+    // Storage file
+    public String getStorageFile() {
+        return storageFile;
+    }
+
+    public void setStorageFile(String storageFile) {
+        this.storageFile = storageFile;
+    }
 }
 

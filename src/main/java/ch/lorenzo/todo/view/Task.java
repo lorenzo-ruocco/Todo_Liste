@@ -1,18 +1,25 @@
 package ch.lorenzo.todo.view;
 
+import java.time.LocalDateTime;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
 
 public class Task {
-    // Static counter to assign incremental IDs
+    // ID generator
     private static int idCounter = 0;
+    // Creation timestamp
+    private final LocalDateTime createdAt = LocalDateTime.now();
 
     // Immutable ID for this task instance
     private final int id;
+    // Property form of the timestamp
+    private final ObjectProperty<LocalDateTime> createdAtProperty = new SimpleObjectProperty<>(LocalDateTime.now());
 
-    // Observable properties for UI bindings
+    // Observable properties
     private StringProperty title = new SimpleStringProperty();
     private StringProperty description = new SimpleStringProperty();
     private BooleanProperty completed = new SimpleBooleanProperty(false);
@@ -28,7 +35,7 @@ public class Task {
         return id;
     }
 
-    // Property accessors for bindings
+    // Property accessors
     public StringProperty titleProperty() {
         return title;
     }
@@ -39,5 +46,13 @@ public class Task {
 
     public BooleanProperty completedProperty() {
         return completed;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public ObjectProperty<LocalDateTime> createdAtProperty() {
+        return createdAtProperty;
     }
 }

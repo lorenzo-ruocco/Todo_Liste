@@ -1,6 +1,11 @@
 package ch.lorenzo.todo.view;
 
+import javafx.geometry.Rectangle2D;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -10,10 +15,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Scene;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Label;
 
 public class TodoView {
 
@@ -21,22 +22,25 @@ public class TodoView {
     private final TodoModel model;
     private Stage stage;
 
-    // UI components
+    // Lists
     private ListView<Task> taskListView = new ListView<>();
     private ListView<Task> doneListView = new ListView<>();
     GridPane pane;
 
+    // Buttons
     Button addButton = new Button("+");
     Button removeButton = new Button("-");
     Button doneButton = new Button("Done");
     Button storageButton = new Button("Storage");
 
+    // Title bar
     HBox buttonBox = new HBox();
     private HBox titleBar = new HBox();
     private Label titleLabel = new Label("Todo-List");
     private Button minimizeButton = new Button("—");
     private Button closeButton = new Button("✕");
 
+    // Drag state
     private double dragOffsetX;
     private double dragOffsetY;
     private static final double SNAP_THRESHOLD = 24;
@@ -68,9 +72,10 @@ public class TodoView {
         // Load stylesheet
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setScene(scene);
+
     }
 
-    // Build main layout
+    // Build title bar
     private HBox createTitleBar() {
         HBox bar = new HBox();
         Region spacer = new Region();
@@ -99,6 +104,7 @@ public class TodoView {
         return bar;
     }
 
+    // Snap the window to screen edges
     private void snapToScreen() {
         Rectangle2D vb = Screen.getScreensForRectangle(
                 stage.getX(), stage.getY(), stage.getWidth(), stage.getHeight()

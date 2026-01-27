@@ -1,3 +1,4 @@
+/* Buttons */
 .button {
     -fx-background-color: #08317e;
 
@@ -19,6 +20,14 @@
     -fx-border-color: #1a1d23;
 }
 
+.button.button-active {
+    -fx-background-color: #062765;
+    -fx-border-color: #000000;
+    -fx-border-width: 1px 1px 0 1px;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.45), 8, 0.0, 0, 2);
+}
+
+/* Title bar */
 .title-bar {
     -fx-background-color: #1a1d23;
     -fx-border-color: #000000;
@@ -43,6 +52,7 @@
     -fx-padding: 4px 10px;
 }
 
+/* List view */
 .list-view {
     -fx-background-color: #1a1d23;
     -fx-control-inner-background: #1a1d23;
@@ -52,6 +62,7 @@
     -fx-padding: 0;
 }
 
+/* List cells */
 .list-cell {
     -fx-background-color: #1a1d23;
     -fx-text-fill: #ffffff;
@@ -72,6 +83,7 @@
     -fx-text-fill: #7f8aa0;
 }
 
+/* Title field */
 .text-field{
     -fx-background-color: transparent;
     -fx-background-insets: 0;
@@ -88,6 +100,7 @@
     -fx-border-color: #000000 transparent #2e6be0 #000000;
 }
 
+/* Description field */
 .description-field {
     -fx-background-color: transparent;
     -fx-background-insets: 0;
@@ -104,6 +117,14 @@
     -fx-border-color: transparent transparent #2e6be0 #000000;
 }
 
+/* Created-at label */
+.created-at {
+    -fx-text-fill: #9aa3b2;
+    -fx-font-size: 11px;
+    -fx-padding: 2px 0 2px 0;
+}
+
+/* Text area */
 .text-area {
     -fx-background-radius: 0;
     -fx-border-radius: 0;
@@ -113,6 +134,7 @@
     -fx-background-radius: 0;
 }
 
+/* Button bar */
 .button-bar {
     -fx-border-color: transparent transparent #000000 transparent;
     -fx-border-width: 0 0 3px 0;
@@ -120,6 +142,7 @@
     -fx-border-insets: 0;
 }
 
+/* Scroll bar */
 .scroll-bar:vertical {
     -fx-background-color: #08317e;
 }
@@ -145,6 +168,7 @@
     -fx-background-color: #ffffff;
 }
 
+/* Checkbox */
 .check-box .box {
     -fx-background-color: #1a1d23;
     -fx-background-insets: 0;
