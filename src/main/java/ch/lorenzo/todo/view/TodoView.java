@@ -52,6 +52,7 @@ public class TodoView {
         this.titleBar = createTitleBar();
         this.pane = createPane();
 
+        // Stage configuration
         stage.setTitle("Todo-List");
         stage.initStyle(StageStyle.UNDECORATED);
 

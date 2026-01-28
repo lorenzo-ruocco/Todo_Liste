@@ -20,9 +20,18 @@ public class TodoMain extends Application {
         model = new TodoModel();
         view = new TodoView(model, stage);
         controller = new TodoController(model, view);
+        controller.initFromStorage();
 
         // Show the UI
         view.start();
+    }
+
+    @Override
+    public void stop() {
+        // Persist on shutdown
+        if (controller != null) {
+            controller.autoSaveToStorage();
+        }
     }
 }
 

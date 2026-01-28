@@ -9,6 +9,7 @@ public class TodoModel {
     private final ObservableList<Task> tasks = FXCollections.observableArrayList();
     private final ObservableList<Task> doneTasks = FXCollections.observableArrayList();
 
+    // Optional storage path (not used by controller logic)
     private String storageFile;
 
     // Open tasks
@@ -46,4 +47,3 @@ public class TodoModel {
         this.storageFile = storageFile;
     }
 }
-
