@@ -50,9 +50,6 @@ public class TodoController {
         // Bind open tasks
         view.getTaskListView().setItems(model.getTasks());
 
-        // Cell rendering for open tasks
-        view.getTaskListView().setCellFactory(lv -> new TaskCell());
-
         // Add a new empty task
         view.addButton.setOnAction(e -> {
             Task task = new Task("", "");
@@ -67,6 +64,8 @@ public class TodoController {
 
         // Size and width binding for open tasks
         view.getTaskListView().setFixedCellSize(200);
+
+        
         view.getTaskListView().setCellFactory(lv -> {
             TaskCell cell = new TaskCell();
             cell.prefWidthProperty().bind(lv.widthProperty().subtract(18));
