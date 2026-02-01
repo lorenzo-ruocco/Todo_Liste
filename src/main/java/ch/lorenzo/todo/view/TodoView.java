@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -35,6 +37,7 @@ public class TodoView {
     // Title bar
     HBox buttonBox = new HBox();
     private HBox titleBar = new HBox();
+    private ImageView appIconView = new ImageView();
     private Label titleLabel = new Label("Todo-List");
     private Button minimizeButton = new Button("—");
     private Button closeButton = new Button("✕");
@@ -64,6 +67,11 @@ public class TodoView {
         stage.setMinWidth(400);
         stage.setMaxWidth(400);
 
+                
+        // Set initial size explicitly
+        stage.setWidth(400);
+        stage.setHeight(vb.getHeight());
+
         VBox root = new VBox(titleBar, pane);
         VBox.setVgrow(pane, Priority.ALWAYS);
 
@@ -73,6 +81,13 @@ public class TodoView {
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
         stage.setScene(scene);
 
+        // App icon (taskbar + title bar)
+        Image appIcon = new Image(getClass().getResourceAsStream("CheckListLogo.png"));
+        stage.getIcons().add(appIcon);
+        appIconView.setImage(appIcon);
+        appIconView.setFitWidth(36);
+        appIconView.setFitHeight(36);
+        appIconView.setPreserveRatio(true);
     }
 
     // Build title bar
@@ -86,7 +101,7 @@ public class TodoView {
         closeButton.getStyleClass().add("title-button");
 
         HBox.setHgrow(spacer, Priority.ALWAYS);
-        bar.getChildren().addAll(titleLabel, spacer, minimizeButton, closeButton);
+        bar.getChildren().addAll(appIconView, titleLabel, spacer, minimizeButton, closeButton);
 
         bar.setOnMousePressed(e -> {
             dragOffsetX = e.getSceneX();

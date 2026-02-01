@@ -45,6 +45,9 @@
         <version>0.0.8</version>
         <configuration>
           <mainClass>ch.lorenzo.todo.view.TodoMain</mainClass>
+          <jvmArgs>
+            <jvmArg>-Dprism.allowhidpi=true</jvmArg>
+          </jvmArgs>
         </configuration>
       </plugin>
     </plugins>
