@@ -12,9 +12,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
-    <javafx.version>17.0.10</javafx.version>
+    <maven.compiler.release>21</maven.compiler.release>
+    <javafx.version>21.0.7</javafx.version>
   </properties>
 
   <dependencies>
@@ -45,13 +44,17 @@
         <version>0.0.8</version>
         <configuration>
           <mainClass>ch.lorenzo.todo.view.TodoMain</mainClass>
-          <jvmArgs>
-            <jvmArg>-Dprism.allowhidpi=true</jvmArg>
-          </jvmArgs>
-          <launcher>Todo_Liste</launcher>
           <jlinkImageName>Todo_Liste</jlinkImageName>
-          <jlinkZipName>Todo_Liste</jlinkZipName>
         </configuration>
+        <executions>
+          <execution>
+            <id>create-runtime-image</id>
+            <phase>prepare-package</phase>
+            <goals>
+              <goal>jlink</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
@@ -60,12 +63,22 @@
         <version>1.7.1</version>
         <configuration>
           <name>Todo_Liste</name>
-          <type>EXE</type>
+          <type>MSI</type>
           <module>ch.lorenzo.todo/ch.lorenzo.todo.view.TodoMain</module>
           <runtimeImage>${project.build.directory}/Todo_Liste</runtimeImage>
           <destination>${project.build.directory}/dist</destination>
-          <removeDestination>true</removeDestination>
+          
+          <winPerUserInstall>true</winPerUserInstall>
         </configuration>
+        <executions>
+          <execution>
+            <id>build-msi-installer</id>
+            <phase>package</phase>
+            <goals>
+              <goal>jpackage</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
 
       <plugin>
@@ -73,9 +86,10 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.13.0</version>
         <configuration>
-          <release>21</release>
+          <release>${maven.compiler.release}</release>
         </configuration>
       </plugin>
     </plugins>
   </build>
 </project>
+

@@ -39,8 +39,8 @@ public class TodoView {
     private HBox titleBar = new HBox();
     private ImageView appIconView = new ImageView();
     private Label titleLabel = new Label("Todo-List");
-    private Button minimizeButton = new Button("—");
-    private Button closeButton = new Button("✕");
+    private Button minimizeButton = new Button("-");
+    private Button closeButton = new Button("X");
 
     // Drag state
     private double dragOffsetX;
@@ -219,3 +219,4 @@ public class TodoView {
         return stage;
     }
 }
+
